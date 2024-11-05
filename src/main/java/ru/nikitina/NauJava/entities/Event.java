@@ -9,8 +9,8 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@Table(name = "logs")
-public class Log {
+@Table(name = "events")
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,8 +19,8 @@ public class Log {
     private Date timestamp;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "logging_level_id", nullable = false)
-    private LoggingLevel loggingLevel;
+    @JoinColumn(name = "event_type_id", nullable = false)
+    private EventType eventType;
 
     @Column
     private String source;
@@ -28,17 +28,21 @@ public class Log {
     @Column
     private String message;
 
+    @Column
+    private String context;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public Log() {}
+    public Event() {}
 
-    public Log(Date timestamp, LoggingLevel loggingLevel, String source, String message, User user) {
+    public Event(Date timestamp, EventType eventType, String source, String message, String context, User user) {
         this.timestamp = timestamp;
-        this.loggingLevel = loggingLevel;
+        this.eventType = eventType;
         this.source = source;
         this.message = message;
+        this.context = context;
         this.user = user;
     }
 }

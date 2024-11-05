@@ -7,6 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NauJavaApplication {
 
     public static void main(String[] args) {
-		SpringApplication.run(NauJavaApplication.class, args);
+        SpringApplication.run(NauJavaApplication.class, args);
     }
 }

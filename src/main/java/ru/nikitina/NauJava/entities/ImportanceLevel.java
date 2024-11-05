@@ -7,8 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "logging_levels")
-public class LoggingLevel {
+@Table(name = "importance_levels")
+public class ImportanceLevel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,15 +19,14 @@ public class LoggingLevel {
     @Column
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "importance_level_id", nullable = false)
-    private ImportanceLevel importanceLevel;
+    @Column
+    private Integer importance;
 
-    public LoggingLevel() {}
+    public ImportanceLevel() {}
 
-    public LoggingLevel(String name, String description, ImportanceLevel importanceLevel) {
+    public ImportanceLevel(String name, String description, Integer importance) {
         this.name = name;
         this.description = description;
-        this.importanceLevel = importanceLevel;
+        this.importance = importance;
     }
 }
