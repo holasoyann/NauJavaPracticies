@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import ru.nikitina.NauJava.entities.Log;
 
-
+@RepositoryRestResource(path="logs")
 public interface LogRepository extends CrudRepository<Log, Long> {
     @Query("SELECT l FROM Log l WHERE l.loggingLevel.name = :loggingLevel")
     List<Log> findByLoggingLevel(@Param("loggingLevel") String loggingLevel);
