@@ -8,4 +8,5 @@ import java.util.List;
 
 @RepositoryRestResource(path="roles")
 public interface RoleRepository extends CrudRepository<Role, Long> {
+    List<Role> findByName(String roleName);
 }
